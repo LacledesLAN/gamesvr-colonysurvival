@@ -37,7 +37,7 @@ RUN useradd --home /app --gid root --system colonysurvival;
 
 COPY --chown=colonysurvival:root --from=colonysurvival-downloader /output /app
 
-#RUN chmod +x /app/ll-scripts/* /app/ll-tests/*.sh;
+RUN chmod +x /app/ll-scripts/* /app/ll-tests/*.sh;
 
 USER colonysurvival
 
