@@ -29,7 +29,7 @@
         {
             "label": "Linux - Build & Run Interactive Server",
             "type": "shell",
-            "command": "docker run -it --net=host lltest/colonysurvival:latest",
+            "command": "docker run -it --net=host lltest/colonysurvival:latest /app/colonyserver.x86_64 -batchmode -nographics +server.networktype LAN +server.world ZEST",
             "dependsOn": "Linux - Build Docker Image",
             "group": "build",
             "problemMatcher": [],

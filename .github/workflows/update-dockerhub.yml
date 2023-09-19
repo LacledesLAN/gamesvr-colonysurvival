@@ -1,0 +1,21 @@
+name: Update Docker Hub Description
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update Docker HUB Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: lacledeslan/gamesvr-cssource
+          short-description: "Colony Survival Dedicated Server"
+          readme-filepath: ./README.md
