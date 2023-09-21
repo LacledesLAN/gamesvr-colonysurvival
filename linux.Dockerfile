@@ -3,7 +3,7 @@ FROM lacledeslan/steamcmd:linux as colonysurvival-downloader
 
 RUN echo "\n\nDownloading Colony Survival Dedicated Server via SteamCMD"; `
         mkdir --parents /output; `
-        /app/steamcmd.sh +force_install_dir /output +login anonymous +app_update 748090 validate +quit;
+        /app/steamcmd.sh +force_install_dir /output +login anonymous +app_update 748090 +app_info_update 1 validate +quit;
 
 COPY ./dist/linux /output
 
@@ -38,6 +38,8 @@ RUN useradd --home /app --gid root --system colonysurvival;
 COPY --chown=colonysurvival:root --from=colonysurvival-downloader /output /app
 
 RUN chmod +x /app/ll-tests/*.sh;
+
+COPY --chown=colonysurvival:root --from=colonysurvival-downloader /app/linux64/steamclient.so /app/.steam/sdk64/steamclient.so
 
 USER colonysurvival
 

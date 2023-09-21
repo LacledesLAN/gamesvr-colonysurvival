@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "batchmode",
+        "colonyserver",
         "colonysurvival",
         "dockerhub",
         "Dockerized",
@@ -7,6 +9,8 @@
         "Laclede's",
         "Laclede’s",
         "lacledeslan",
+        "networktype",
+        "nographics",
         "steamcmd"
     ],
     "markdownlint.ignore": [
