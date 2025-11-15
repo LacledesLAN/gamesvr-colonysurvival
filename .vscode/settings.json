@@ -5,13 +5,16 @@
         "colonysurvival",
         "dockerhub",
         "Dockerized",
+        "dpkg",
         "gamesvr",
         "Laclede's",
         "Laclede’s",
         "lacledeslan",
         "networktype",
         "nographics",
-        "steamcmd"
+        "steamclient",
+        "steamcmd",
+        "trixie"
     ],
     "markdownlint.ignore": [
         ".gitkeep", "LICENSE"

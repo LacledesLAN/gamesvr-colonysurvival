@@ -1,5 +1,5 @@
 # escape=`
-FROM lacledeslan/steamcmd:linux as colonysurvival-downloader
+FROM lacledeslan/steamcmd:linux AS colonysurvival-downloader
 
 RUN echo "\n\nDownloading Colony Survival Dedicated Server via SteamCMD"; `
         mkdir --parents /output; `
@@ -8,7 +8,7 @@ RUN echo "\n\nDownloading Colony Survival Dedicated Server via SteamCMD"; `
 COPY ./dist/linux /output
 
 #=======================================================================`
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 ARG BUILDNODE=unspecified
 ARG SOURCE_COMMIT=unspecified
@@ -17,7 +17,7 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install -y `
-        ca-certificates locales locales-all software-properties-common tini tmux &&`
+        ca-certificates locales locales-all tmux &&`
     apt-get clean &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
 
@@ -32,7 +32,7 @@ LABEL maintainer="Laclede's LAN <contact @lacledeslan.com>" `
       org.label-schema.description="Colony Survival Dedicated Server" `
       org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-colonysurvival"
 
-# Set up Enviornment
+# Set up Environment
 RUN useradd --home /app --gid root --system colonysurvival;
 
 COPY --chown=colonysurvival:root --from=colonysurvival-downloader /output /app
